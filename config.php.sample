@@ -1,0 +1,16 @@
+<?php
+
+/*
+ * This script is used to test of opOpenSocialPlugin.
+ * (c) Shogo Kawahara <kawahara@bucyou.net>
+ */
+
+/* For example
+define('CONSUMER_KEY', '0CNRTul3hXdHAmIJ');
+define('CONSUMER_SECRET', 'N]k95_LxmPliN1wgjh$ture?DFyA#ZFS');
+define('BASE_URL', 'http://op3.happyturn');
+*/
+
+define('CONSUMER_KEY', '');
+define('CONSUMER_SECRET', '');
+define('BASE_URL', '');

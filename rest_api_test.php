@@ -5,16 +5,7 @@
  * (c) Shogo Kawahara <kawahara@bucyou.net>
  */
 
-/* For exapmple
-define('CONSUMER_KEY', '0CNRTul3hXdHAmIJ');
-define('CONSUMER_SECRET', 'N]k95_LxmPliN1wgjh$ture?DFyA#ZFS');
-define('BASE_URL', 'http://op3.happyturn');
-*/
-
-define('CONSUMER_KEY', '');
-define('CONSUMER_SECRET', '');
-define('BASE_URL', '');
-
+include_once dirname(__FILE__).'/config.php';
 include_once dirname(__FILE__).'/OAuth.php';
 
 $consumer = new OAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
@@ -29,7 +20,7 @@ $request->set_parameter('xoauth_requestor_id', 1);
 $request->sign_request(new OAuthSignatureMethod_HMAC_SHA1(), $consumer, null);
 $res = do_get($request->get_normalized_http_url(), $request->to_postdata());
 
-var_dump("Test1 /people/@me/@self");
+echo "-----Test1 /people/@me/@self\n";
 var_dump($res);
 
 $request = OAuthRequest::from_consumer_and_token(
@@ -42,8 +33,23 @@ $request->set_parameter('xoauth_requestor_id', 1);
 $request->sign_request(new OAuthSignatureMethod_HMAC_SHA1(), $consumer, null);
 $res = do_get($request->get_normalized_http_url(), $request->to_postdata());
 
-var_dump("Test2 /people/@me/@friends");
+echo "-----Test2 /people/@me/@friends\n";
 var_dump($res);
+
+$request = OAuthRequest::from_consumer_and_token(
+  $consumer,
+  null,
+  'GET',
+  BASE_URL.'/api_prof.php/social/rest/people/@me/@friends',
+  array('filterBy' => 'hasApp')
+);
+$request->set_parameter('xoauth_requestor_id', 1);
+$request->sign_request(new OAuthSignatureMethod_HMAC_SHA1(), $consumer, null);
+$res = do_get($request->get_normalized_http_url(), $request->to_postdata());
+
+echo "-----Test3 /people/@me/@friends?filterBy=hasApp\n";
+var_dump($res);
+
 
 function do_get($uri, $data = '')
 {
