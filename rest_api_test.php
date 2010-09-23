@@ -15,7 +15,7 @@ define('CONSUMER_KEY', '');
 define('CONSUMER_SECRET', '');
 define('BASE_URL', '');
 
-include_once '.OAuth.php';
+include_once dirname(__FILE__).'/OAuth.php';
 
 $consumer = new OAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
 
