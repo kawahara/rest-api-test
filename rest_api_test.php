@@ -14,7 +14,7 @@ $request = OAuthRequest::from_consumer_and_token(
   $consumer,
   null,
   'GET',
-  BASE_URL.'/api_prof.php/social/rest/people/@me/@self'
+  BASE_URL.'/api.php/social/rest/people/@me/@self'
 );
 $request->set_parameter('xoauth_requestor_id', 1);
 $request->sign_request(new OAuthSignatureMethod_HMAC_SHA1(), $consumer, null);
@@ -27,7 +27,7 @@ $request = OAuthRequest::from_consumer_and_token(
   $consumer,
   null,
   'GET',
-  BASE_URL.'/api_prof.php/social/rest/people/@me/@friends'
+  BASE_URL.'/api.php/social/rest/people/@me/@friends'
 );
 $request->set_parameter('xoauth_requestor_id', 1);
 $request->sign_request(new OAuthSignatureMethod_HMAC_SHA1(), $consumer, null);
@@ -40,7 +40,7 @@ $request = OAuthRequest::from_consumer_and_token(
   $consumer,
   null,
   'GET',
-  BASE_URL.'/api_prof.php/social/rest/people/@me/@friends',
+  BASE_URL.'/api.php/social/rest/people/@me/@friends',
   array('filterBy' => 'hasApp')
 );
 $request->set_parameter('xoauth_requestor_id', 1);
